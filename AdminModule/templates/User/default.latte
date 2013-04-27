@@ -1,0 +1,19 @@
+{block #title}
+    Přehled všech uživatelů
+{/block}
+
+{block #toolbar}
+    <a class="toolbar" n:href="User:add">Přidat uživatele</a>
+    
+{/block}
+
+{block #head}
+    {control dataGridHead}
+{/block}
+
+{block #content}
+    {*control userConfirmDialog*}
+    {control userDataGrid}
+{/block}
+
+

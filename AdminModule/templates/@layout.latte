@@ -1,0 +1,385 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="robots" content="noindex" />
+        <title>Administrace | UMBRO</title>
+        <!--[if IE]>
+        <link rel="stylesheet" media="all" type="text/css" href="css/pro_dropline_ie.css" />
+        <![endif]-->
+
+        
+        <link rel="stylesheet" href="{$basePath}/css/ajax.css" type="text/css" media="screen" title="default" />
+        <link rel="stylesheet" href="{$basePath}/css/confirmform.css" type="text/css" media="screen" title="default" />
+
+        <!--  jquery core -->        
+        <link rel="stylesheet" href="{$basePath}/css/screen.css" type="text/css" media="screen" title="default" />
+        <link rel="stylesheet" href="{$basePath}/css/flash_messages.css" type="text/css" media="screen" title="default" />
+        <link rel="stylesheet" href="{$basePath}/css/datagrid_icons.css" type="text/css" media="screen" title="default" />
+        <!--  <link rel="stylesheet" href="{$basePath}/css/ui-lightness/jquery-ui-1.8.14.custom.css" type="text/css" media="screen" title="default" />-->  
+        <link rel="stylesheet" href="{$basePath}/css/ui-lightness/jquery.custom.css" type="text/css" media="screen" title="default" />
+        <link rel="stylesheet" href="{$basePath}/css/jquery.Jcrop.css" type="text/css" media="screen" title="default" />
+                
+        <script src="{$basePath}/js/jquery.min.js" type="text/javascript"></script>
+        <script src="{$basePath}/js/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="{$basePath}/js/jquery.nette.js" type="text/javascript"></script>
+        <script src="{$basePath}/js/jquery.livequery.js" type="text/javascript"></script>
+       
+        <script src="{$basePath}/js/netteForms.js" type="text/javascript"></script>
+        <script src="{$basePath}/js/jquery.ajaxform.js" type="text/javascript"></script>
+
+        <script src="{$basePath}/js/tiny_mce/tiny_mce.js" type="text/javascript"></script>
+        
+        <script src="{$basePath}/js/cs-local.js" type="text/javascript"></script>
+        
+        <script src="{$basePath}/js/highcharts/highcharts.js" type="text/javascript"></script>
+        
+        {*<script src="{$basePath}/js/jquery-timepicker.js" type="text/javascript"></script>*}
+
+        
+        <!-- MUST BE THE LAST SCRIPT IN <HEAD></HEAD></HEAD> png fix -->
+        
+        <script src="{$basePath}/js/jquery.Jcrop.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            tinyMCE.init({
+                mode : 'textareas',
+                theme : 'advanced',
+                plugins : "pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+
+                theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+                theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr",
+                
+                theme_advanced_toolbar_location : "top",
+                theme_advanced_toolbar_align : "left",
+                theme_advanced_statusbar_location : "bottom",
+                theme_advanced_resizing : true,
+                
+                force_br_newlines : true,
+                force_p_newlines : false,
+                forced_root_block : '' // Needed for 3.x
+
+            });
+        </script>
+        
+        {*
+        <script src="{$basePath}/uploadify/swfobject.js" type="text/javascript"></script>
+        <script src="{$basePath}/uploadify/jquery.uploadify.v2.1.4.js" type="text/javascript"></script>
+        *}
+        
+        <script src="{$basePath}/js/php.js" type="text/javascript"></script>
+        
+        {block #head}{/block}
+        
+        
+    </head>
+    <body> 
+        <!-- Start: page-top-outer -->
+        <div id="page-top-outer">    
+
+            <!-- Start: page-top -->
+            <div id="page-top">
+
+                <!-- start logo -->
+                <div id="logo">
+                    <a href=""><img src="{$basePath}/images/shared/logo.png" width="156" height="40" alt="" /></a>
+                </div>
+                <!-- end logo -->
+
+                <!--  start top-search -->
+                <div id="top-search">
+                    
+                </div>
+                <!--  end top-search -->
+                <div class="clear"></div>
+
+            </div>
+            <!-- End: page-top -->
+
+        </div>
+        <!-- End: page-top-outer -->
+
+        <div class="clear">&nbsp;</div>
+
+        <!--  start nav-outer-repeat................................................................................................. START -->
+        <div class="nav-outer-repeat"> 
+            <!--  start nav-outer -->
+            <div class="nav-outer"> 
+
+                <!-- start nav-right -->
+                <div id="nav-right">
+
+                   
+                    
+                    <div class="nav-divider">&nbsp;</div>
+                    <a href="{plink Default:logout}" id="logout"><img src="{$basePath}/images/shared/nav/nav_logout.gif" width="64" height="14" alt="" /></a>
+                    <div class="clear">&nbsp;</div>
+
+                    <!--  start account-content -->	
+                    <div class="account-content">
+                        <div class="account-drop-inner">
+                            <a href="" id="acc-settings">Settings</a>
+                            <div class="clear">&nbsp;</div>
+                            <div class="acc-line">&nbsp;</div>
+                            <a href="" id="acc-details">Personal details </a>
+                            <div class="clear">&nbsp;</div>
+                            <div class="acc-line">&nbsp;</div>
+                            <a href="" id="acc-project">Project details</a>
+                            <div class="clear">&nbsp;</div>
+                            <div class="acc-line">&nbsp;</div>
+                            <a href="" id="acc-inbox">Inbox</a>
+                            <div class="clear">&nbsp;</div>
+                            <div class="acc-line">&nbsp;</div>
+                            <a href="" id="acc-stats">Statistics</a> 
+                        </div>
+                    </div>
+                    <!--  end account-content -->
+
+                </div>
+                <!-- end nav-right -->
+
+
+                <!--  start nav -->
+                <div class="nav">
+                    <div class="table">
+
+                        {control navigation}
+
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!--  start nav -->
+
+            </div>
+            <div class="clear"></div>
+            <!--  start nav-outer -->
+        </div>
+        <!--  start nav-outer-repeat................................................... END -->
+
+        <div class="clear"></div>
+
+        <!-- start content-outer ........................................................................................................................START -->
+        <div id="content-outer">
+            <!-- start content -->
+            <div id="content">
+
+                <!--  start page-heading -->
+                <div id="page-heading">
+                    <h1>{block #title}Vítejte .o){/block} <span class="toolbar-placeholder">{block #toolbar}{/block}</span></h1>                    
+                </div>
+                <!-- end page-heading -->
+
+                <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
+                    <tr>
+                        <th rowspan="3" class="sized"><img src="{$basePath}/images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+                        <th class="topleft"></th>
+                        <td id="tbl-border-top">&nbsp;</td>
+                        <th class="topright"></th>
+                        <th rowspan="3" class="sized"><img src="{$basePath}/images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+                    </tr>
+                    <tr>
+                        <td id="tbl-border-left"></td>
+                        <td>
+                            <!--  start content-table-inner ...................................................................... START -->
+                            <div id="content-table-inner">
+
+                                <!--  start table-content  -->
+                                <div id="table-content">
+
+                                    {snippet flashes}
+                                        {foreach $flashes as $flash}                                        
+                                        <div class="flash {$flash->type}" id="message-{$flash->type}">
+                                            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                <tbody><tr>
+                                                        <td class="{$flash->type}-left">{$flash->message}</td>
+                                                        <td class="{$flash->type}-right"><a class="close-{$flash->type} flash_close_button"><img alt="" src="{$basePath}/images/table/icon_close_{$flash->type}.gif"></a></td>
+                                                    </tr>
+                                                </tbody></table>
+                                        </div>
+                                        {/foreach}
+                                    {/snippet}
+                                    
+                                    {include #content}
+
+                                    
+
+                                </div>
+                                <!--  end table-content  -->
+
+                                <div class="clear"></div>
+
+                            </div>
+                            <!--  end content-table-inner ............................................END  -->
+                        </td>
+                        <td id="tbl-border-right"></td>
+                    </tr>
+                    <tr>
+                        <th class="sized bottomleft"></th>
+                        <td id="tbl-border-bottom">&nbsp;</td>
+                        <th class="sized bottomright"></th>
+                    </tr>
+                </table>
+                <div class="clear">&nbsp;</div>
+                
+                <div class="actionbar">
+                    {block #actionbar}{/block}
+                </div>
+            </div>
+            <!--  end content -->
+            <div class="clear">&nbsp;</div>
+            
+            
+        </div>
+        <!--  end content-outer........................................................END -->
+
+        <div class="clear">&nbsp;</div>
+
+        <!-- start footer -->         
+        <div id="footer">
+            <!-- <div id="footer-pad">&nbsp;</div> -->
+            <!--  start footer-left -->
+            <div id="footer-left">
+                Autor webu <a href="http://www.netstars.cz">www.netstars.cz</a></div>
+            <!--  end footer-left -->
+            <div class="clear">&nbsp;</div>
+        </div>
+        <!-- end footer -->
+
+
+
+
+
+        <script>
+            
+            
+
+            
+            
+            $(document).ready(function(){
+                
+                
+                $("tr.required th").prepend('<span style="color:red;">*</span>');
+                
+                /* Volání AJAXu u všech odkazů s třídou ajax */
+                $("a.ajax").live("click", function (event) {
+                    event.preventDefault();
+                    $.get(this.href);
+                });
+                
+                $("a.flash_close_button").live('click', function(event){
+                    $("div.flash").slideUp('slow');
+                    return false;
+                });
+
+                $( "a.toolbar" ).button({
+                    icons: {
+                        primary: "ui-icon-plusthick"
+                    }
+                });
+
+                $( "a.stats" ).button({
+                    icons: {
+                        primary: "ui-icon-clipboard"
+                    }
+                });
+
+                $( "a.media" ).button({
+                    icons: {
+                        primary: "ui-icon-video"
+                    }
+                });
+                
+                $( "a.key" ).button({
+                    icons: {
+                        primary: "ui-icon-key"
+                    }
+                });
+                
+                $( "a.sort" ).button({
+                    icons: {
+                        primary: "ui-icon-transferthick-e-w"
+                    }
+                });
+                
+                $( "a.save" ).button({
+                    icons: {
+                        primary: "ui-icon-disk"
+                    }
+                });
+                
+                $( "a.back-team" ).button({
+                    icons: {
+                        primary: "ui-icon-person"
+                    }
+                });
+                
+                $( "a.gallery" ).button({
+                    icons: {
+                        primary: "ui-icon-image"
+                    }
+                });
+                
+                $( "a.mail" ).button({
+                    icons: {
+                        primary: "ui-icon-mail-closed"
+                    }
+                });
+                
+                $( "a.gears" ).button({
+                    icons: {
+                        primary: "ui-icon-gear"
+                    }
+                });
+
+                $( "input.datepicker" ).datepicker({
+                    showOn: "button",
+                    buttonImage: {$basePath}+"/images/calendar.png",
+                    buttonImageOnly: true
+                });
+
+
+                $( "input.j_date_from" ).datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    numberOfMonths: 3,
+                    onSelect: function( selectedDate ) {
+                        $( "input.j_date_to" ).datepicker( "option", "minDate", selectedDate );
+                    }
+                });
+                $( "input.j_date_to" ).datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    numberOfMonths: 3,
+                    onSelect: function( selectedDate ) {
+                        $( "input.j_date_from" ).datepicker( "option", "maxDate", selectedDate );
+                    }
+                });
+                
+                $( "#radio" ).buttonset();
+                
+                $( "input.ad-attrib-radio" ).click(function() {
+                    window.location = $(this).attr('href');
+                });
+
+{*
+                $( "input.timepicker" ).timepicker({
+                    showOn: "button",
+                    buttonImage: {$basePath}+"/images/time.png",
+                    buttonImageOnly: true,
+                    timeOnlyTitle: 'Zadejte čas',
+                    timeText: 'Čas',
+                    hourText: 'Hodiny',
+                    minuteText: 'Minuty',
+                    secondText: 'secondText',
+                    currentText: 'Teď',
+                    closeText: 'Ok'
+                });
+  *}              
+                
+            });
+
+        </script>
+    </body>
+</html>

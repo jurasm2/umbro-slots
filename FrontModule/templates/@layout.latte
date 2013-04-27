@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    
+        <link rel="shortcut icon" href="/favicon.ico" />
+        
+        {block css}
+        <link rel="stylesheet" type="text/css" href="{$basePath}/css/blitzer/jquery-ui-1.9.2.custom.css" />
+        <link rel="stylesheet" type="text/css" href="{$basePath}/front/css/styles.css" />
+        {/block}
+
+        {block js}
+        <script type="text/javascript" src="{$basePath}/js/jquery.min.js"></script>
+        <script type="text/javascript" src="{$basePath}/js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="{$basePath}/js/cs-local.js"></script>
+        <script type="text/javascript" src="{$basePath}/js/jquery.nette.js"></script>
+        <script type="text/javascript" src="{$basePath}/js/netteForms.js"></script>
+        {/block}
+
+        <title>UMBRO TEAMS HAPPY DAYS</title>
+        
+    <body>
+
+    <div class="wrapper clearfix">
+        <div class="header clearfix">
+        <a href="#" class="logo fleft"></a>
+        <span class="fleft">UMBRO TEAMS HAPPY DAYS</span>
+        </div>
+        {foreach $flashes as $flash}
+            <div class="flash-msg {$flash->type}">{$flash->message}</div>
+        {/foreach}
+        
+        {block #content}
+        
+        {/block}
+    </div>
+    </body>
+</html>

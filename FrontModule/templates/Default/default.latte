@@ -1,0 +1,121 @@
+
+{block content}
+
+    <script type="text/javascript">
+        
+        var $disabledDays = {!$disabledDays};
+        
+        $(function() {
+            $('#datepicker').datepicker({
+                'onSelect': function($dateText) { 
+                    $.get('{!$getSlotsLink}'+'&date='+$dateText);
+                },
+                'minDate': {$minDate},
+                'maxDate': {$maxDate},
+                'beforeShowDay': function(date) {
+                    var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
+                    //console.log('Checking (raw): ' + y + '-' + (m+1) + '-' + d);
+                    for (i = 0; i < $disabledDays.length; i++) {
+                      if($.inArray(y + '-' + (m+1) + '-' + d,$disabledDays) != -1) {
+                        return [false];
+                      }
+                    }
+                    // omit sundays
+                    var day = date.getDay();
+                    if (day != 0) {
+                        return [true];
+                    } else {
+                        return [false];
+                    }
+                }
+            });
+            
+            
+            function getftime($startDate) {
+                var $min = $startDate.getMinutes();
+                var $hours = $startDate.getHours();
+                
+                if ($min < 10) { $min   = "0"+$min; }
+                if ($hours < 10) { $hours   = "0"+$hours; }
+                return $hours+':'+$min;
+            }
+            
+            $('.reservationLink').live('click', function(event) {                
+                var $slotId = $(this).attr('id');
+                event.preventDefault();
+                $('.popup').show();
+                
+                var $startDate = new Date($slotId * 1000);
+                var $endDate = new Date($slotId * 1000 + {!$slotLengthInSeconds} * 1000);
+                
+                var $day = $startDate.getDate() + '.' + ($startDate.getMonth() + 1) + '.' + $startDate.getFullYear()
+                var $startTime = getftime($startDate);
+                var $endTime = getftime($endDate);
+                
+                $('#date').text($day);
+                $('#start_time').text($startTime);
+                $('#end_time').text($endTime);
+                
+                
+                $('#frmreservationForm-start_time').val($slotId);
+                
+            })
+
+
+            $('.popup-inner').click(function(e) {
+                e.stopPropagation();
+            });
+  
+            $('.close-button').click(function() {
+                $('.popup').hide();
+            });
+
+            $('html').click(function() {
+                $(".popup").hide();
+            });
+            
+        })
+        
+    </script>
+
+    <div class="container">
+        <div id="datepicker" class="fleft"></div>
+        
+        {snippet #slots}
+        
+        
+            {if $slots}
+            <div class="time-slots fright clearfix">
+            <div class="currentDay">{$currentDay}</div>
+                <ul>
+        
+                {foreach $slots as $slot}
+                    {if $slot[reserved]}
+                        <li class="disabled"><span class="status"></span><span class="time">{$slot[start_time]|date:'H:i'} - {$slot[end_time]|date:'H:i'}</span></li>
+                    {else}
+                        <li class="active"><span class="status"></span><span class="time">{$slot[start_time]|date:'H:i'} - {$slot[end_time]|date:'H:i'}</span><a id="{$slot[start_time]}" class="reservationLink" href="#"><span></span>Rezervovat</a></li>
+                    {/if}
+                {/foreach}
+                </ul>
+            </div>
+            {/if}
+        
+        {/snippet}
+    </div>
+    
+    
+    
+    <div class="popup">
+        <div class="popup-inner">
+            <div class="popup-header">
+                <h2>Rezervace dne<br/><span id="date"></span> od <span id="start_time"></span> do <span id="end_time"></span></h2>
+                <span class="close-button">X</span>
+            </div>
+            <div id="reservationForm">
+                {control reservationForm}
+            </div>
+        </div>
+    </div>
+    
+    
+{/block}

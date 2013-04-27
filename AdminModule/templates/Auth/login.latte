@@ -1,0 +1,36 @@
+{block #title}Login :: {include #parent}{/block}
+
+{var robots = noindex}
+
+{block #content}
+<!--  start loginbox ................................................................................. -->
+<div id="loginbox">
+
+    <!--  start login-inner -->
+    <div id="login-inner">
+
+
+        {form loginForm}
+        <?php $form->render('errors') ?>
+        
+        
+                    {label email /}
+                    {input email}
+                    
+                    {label password /}
+                    {input password}
+                    
+                    {input send}
+
+           
+        {/form}
+        
+    </div>
+    <!--  end login-inner -->
+    <div class="clear"></div>
+    
+</div>
+<!--  end loginbox -->
+
+
+{/block}
